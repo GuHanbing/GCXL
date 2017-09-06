@@ -1,11 +1,12 @@
 #include "./LIGHT/light.h"
-
-int barrier,blackR,blackL;
+#include "control.h"
+int barrier=NONE,blackR=NONE,blackL=NONE;
 void TIM1_UP_IRQHandler(void)
 {
 	if(TIM1->SR&0X0001)
 	{
 		Sta_Refresh();
+		control();
 	}
 	TIM1->SR&=~(1<<0);
 }
@@ -38,7 +39,7 @@ void Sta_Refresh()
 		barrier=EXIST;
 	else
 		barrier=NONE;
-	
+
 	if(LIGHT_R==1)
 		blackR=EXIST;
 	else

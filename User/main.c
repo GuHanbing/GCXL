@@ -29,6 +29,7 @@
 #include "algorithm.h"
 #include "control.h"
 #include "./LIGHT/light.h"
+#include "FSM.h"
 extern int Obc;
 extern uint8_t Ov7725_vsync;
 
@@ -135,7 +136,7 @@ int main(void)
 			Ov7725_vsync = 0;			
 			LED1_TOGGLE;
       Analysis();
-			control();
+	
 		}
 		
 	

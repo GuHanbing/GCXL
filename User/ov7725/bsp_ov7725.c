@@ -43,7 +43,7 @@ OV7725_MODE_PARAM cam_mode =
 /************配置1*********横屏显示*****************************/
 	
 	.QVGA_VGA = 0,	//QVGA模式
-	.cam_sx = 10,
+	.cam_sx = 20,
 	.cam_sy = 0,	
 	
 	.cam_width = 320,
@@ -805,10 +805,10 @@ void ImagDisp(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
 		ILI9341_OpenWindow(0,0,width/2,height/2);   //显示采样后图像
 	ILI9341_Write_Cmd ( CMD_SetPixel );	
 
-			for(j = 0; j < height/2; j++)
-		{
+ for(j = 0; j < height/2; j++)
+ {
 		for(i = 0; i < width/2; i++)
-	{
+	  {
 
 			ILI9341_Write_Data(rIMG[j][i]<<11);
 			

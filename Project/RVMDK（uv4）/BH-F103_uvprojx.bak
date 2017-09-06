@@ -652,11 +652,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\User\LIGHT\light.c</FilePath>
             </File>
-            <File>
-              <FileName>fsm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\fsm.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

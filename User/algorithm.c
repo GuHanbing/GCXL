@@ -7,12 +7,7 @@ int Center[120];
 int bLeftFlag=0;
 int bRightFlag=0;
 double cErr=0;
-void Analysis()
-{
-	FindWay(rIMG,8);
-	//WayShow(Center,160,120);
-	Calc_Center_Error();
-}
+
 
 int Max(int a,int b)
 {
@@ -104,20 +99,20 @@ void FindWay(uint8_t img[][160],int black)
 					{
 					 bEd=col;
 					 Center[row]=(bSt+bEd)/2;
-//					if(Center[row+1]-width[row+1]/2-bSt>=10)
-//					{
-//						bLeft++;
-//						Center[row]=Center[row+1];
-//						width[row]=width[row+1];
-//					  
-//				  }    
-//					if(bEd-(Center[row+1]+width[row+1]/2)>=10)
-//					{
-//						bRight++;
-//						Center[row]=Center[row+1];
-//						width[row]=width[row+1];
-//					  
-//				  } 
+					if(Center[row+1]-width[row+1]/2-bSt>=10)
+					{
+						bLeft++;
+						Center[row]=Center[row+1];
+						width[row]=width[row+1];
+					  
+				  }    
+					if(bEd-(Center[row+1]+width[row+1]/2)>=10)
+					{
+						bRight++;
+						Center[row]=Center[row+1];
+						width[row]=width[row+1];
+					  
+				  } 
 					 bFlag=0;
            break;
 				 }
@@ -139,12 +134,14 @@ void FindWay(uint8_t img[][160],int black)
 		bRightFlag=0;	
 }
 
+int valid=0;
 void Calc_Center_Error()
 {
 	static double last_err=0;
-	int i=0,valid=0;
+	int i=0;
 	double sum=0;
-	for(i=60;i<120;i++)
+	valid=0;
+	for(i=80;i<120;i++)
 	{
 		if(Center[i]!=0)
 		{
@@ -155,7 +152,7 @@ void Calc_Center_Error()
 	if(valid>20)
 	{
 	  cErr=sum/i;
-		cErr*=60/valid;
+		cErr*=40.0/valid;
 		last_err=cErr;
 	}
 	else
@@ -165,10 +162,13 @@ void Calc_Center_Error()
 				if(last_err>0.1)
 			cErr=1.5;
 	}
-	if(fabs(cErr)<0.3)
-		cErr*=0.4;
-//	if(cErr<-1)
-//		cErr=-1;
-//	if(cErr>1)
-//		cErr=1;	
+//	if(fabs(cErr)<0.3)
+//		cErr*=0.4;
+	if(cErr<-1)
+		cErr=-1;
+	if(cErr>1)
+		cErr=1;	
+	WayShow(Center,160,120);
 }
+
+

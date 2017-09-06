@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 #include "math.h"
 
-void Analysis(void);
+
 void FindWay(uint8_t img[][160],int black);
 void Calc_Center_Error(void);
 
