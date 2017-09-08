@@ -3,6 +3,13 @@
 	   
 #include "stm32f10x.h"
 
+typedef enum
+{
+	WAY=0,
+	RED,
+	BLUE,
+	GREEN,
+}show;
 
 /*摄像头配置结构体*/
 typedef struct

@@ -23,7 +23,7 @@ void Data_precondition()
 	
 	Calc_Center_Error();
 	}
-	FindBlock_R();
+	//FindBlock_R();
 }
 void Analysis()
 {

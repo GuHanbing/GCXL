@@ -803,21 +803,7 @@ void ImagDisp(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
 		
 		}
 	}
-		ILI9341_OpenWindow(0,0,width/2,height/2);   //显示采样后图像
-	ILI9341_Write_Cmd ( CMD_SetPixel );	
 
- for(j = 0; j < height/2; j++)
- {
-		for(i = 0; i < width/2; i++)
-	  {
-      if(rIMG[j][i]>gIMG[j][i]/2+bIMG[j][i]-10&&rIMG[j][i]>9)
-			  ILI9341_Write_Data(rIMG[j][i]<<11);
-			else
-				ILI9341_Write_Data(0);
-			
-		}
-		
-	}
  
 }
 
@@ -839,5 +825,38 @@ void WayShow(int cen[],uint16_t width,uint16_t height)
 	}
 }
 
+extern int Center[119];
+int Red(int line,int col);
+void Show(show choice)
+{
+		uint16_t i, j; 
+		ILI9341_OpenWindow(0,0,160,120);
+	ILI9341_Write_Cmd ( CMD_SetPixel );	
+ for(j = 0; j < 120; j++)
+ {
+	for(i = 0; i < 160; i++)
+	{
+	
+//		 if(choice==WAY)
+//		 {
+//			 if(i==Center[j]&&Center[j]!=0)
+//				 ILI9341_Write_Data(0xFFFF);
+//			 else
+//				 ILI9341_Write_Data(0);
+//			 break;
+//		 }
+//     if(choice==RED)
+//		 {
+//			 if(Red(j,i))
+//			 {
+				 ILI9341_Write_Data(rIMG[j][i]<<11);
+//			 }
+			 
+//		 }
+		
+		
+	}
+ }
+}
 
 /****************************End OF File*************************************/

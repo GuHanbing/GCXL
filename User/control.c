@@ -1,10 +1,12 @@
 #include "control.h"
 #include "math.h"
 #include "FSM.h"
+#include "./key/bsp_key.h" 
 extern double cErr;
 int motoL,motoR;
 void Turn(double dir);
 void Straight(double speed);
+int motorFlag=0;
 void control()
 {
 	com temp;
@@ -25,7 +27,12 @@ void control()
 
 			default:break;
 		}
-		//Set_Pwm(motoL,motoR);
+		if( Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON  )
+		{	
+			motorFlag=~motorFlag;
+		}
+		if(motorFlag)
+		 Set_Pwm(motoL,motoR);
 	//	Set_Pwm(7199,7199);
 	}
   

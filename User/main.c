@@ -44,6 +44,8 @@ extern OV7725_MODE_PARAM cam_mode;
   * @param  无  
   * @retval 无
   */
+show showChoice=RED;
+void Show(show choice);
 int main(void) 	
 {		
 	
@@ -135,10 +137,10 @@ int main(void)
 			Ov7725_vsync = 0;			
 			LED1_TOGGLE;
       Data_precondition();
-	
+	    Show(showChoice);
 		}
 		
-	
+	 
 //		/*每隔一段时间计算一次帧率*/
 //		if(Task_Delay[0] == 0)  
 //		{			
