@@ -82,7 +82,8 @@ int main(void)
 	while(OV7725_Init() != SUCCESS)
 	{
 		retry++;
-
+//		if(Obc==Obs)
+//		{}
 		if(retry>5)
 		{
 			printf("\r\n没有检测到OV7725摄像头\r\n");
@@ -136,8 +137,13 @@ int main(void)
 			
 			Ov7725_vsync = 0;			
 			LED1_TOGGLE;
+<<<<<<< HEAD
       Data_precondition();
 	    Show(showChoice);
+=======
+      Analysis();
+	
+>>>>>>> parent of 0d8a9a8... 17.9.8
 		}
 		
 	 

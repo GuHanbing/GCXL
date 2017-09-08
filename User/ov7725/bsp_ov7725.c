@@ -43,7 +43,7 @@ OV7725_MODE_PARAM cam_mode =
 /************配置1*********横屏显示*****************************/
 	
 	.QVGA_VGA = 0,	//QVGA模式
-	.cam_sx = 0,
+	.cam_sx = 20,
 	.cam_sy = 0,	
 	
 	.cam_width = 320,
@@ -797,14 +797,26 @@ void ImagDisp(uint16_t sx,uint16_t sy,uint16_t width,uint16_t height)
 			 rIMG[j/2][i/2]=Camera_Data>>11;            //第一维是行数，第二维是列数
 
      // ILI9341_Write_Data(rIMG[j/2][i/2]<<11);
-			gIMG[j/2][i/2]=(Camera_Data&0x07E0)>>5;
-			bIMG[j/2][i/2]=Camera_Data&0x1F;
+			//gIMG[j/2][i/2]=(Camera_Data&0x07E0)>>5;
 			//	ILI9341_Write_Data(gIMG[j/2][i/2]<<5);
 		
 		}
 	}
 
+<<<<<<< HEAD
  
+=======
+ for(j = 0; j < height/2; j++)
+ {
+		for(i = 0; i < width/2; i++)
+	  {
+
+			ILI9341_Write_Data(rIMG[j][i]<<11);
+			
+		}
+		
+	}
+>>>>>>> parent of 0d8a9a8... 17.9.8
 }
 
 void WayShow(int cen[],uint16_t width,uint16_t height)
