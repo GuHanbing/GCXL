@@ -4,7 +4,31 @@
 #include "stm32f10x.h"
 #include "math.h"
 
+#define CENTER 95
 
+
+
+typedef struct
+{
+	char num;
+	char st;
+	char ed;
+	char line;
+}
+Tuan;
+
+
+typedef struct
+{
+	char num;
+	char area;
+	char left;
+	char right;
+	char top;
+	char buttom;
+	int center_x;
+	int center_y;
+}Block;
 void FindWay(uint8_t img[][160],int black);
 void Calc_Center_Error(void);
 

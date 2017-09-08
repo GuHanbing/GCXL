@@ -37,7 +37,7 @@ typedef struct
 	}memory[6];
 }sta;
 
-
+void Data_precondition();
 void Analysis(void);
 /**********************************************ЦёБо******************************************/
 

@@ -10,8 +10,8 @@ com Command;
 
 void StateShift();
 void StateHandle();
-
-void Analysis()
+void FindBlock_R();
+void Data_precondition()
 {
 	if(State.sec==STAY)
 	{
@@ -23,6 +23,11 @@ void Analysis()
 	
 	Calc_Center_Error();
 	}
+	FindBlock_R();
+}
+void Analysis()
+{
+
 	StateShift();
 	StateHandle();
 }
@@ -69,25 +74,25 @@ void StateShift()
 			if(State.sec==UP_RIGHT)
 			{
        time1[0]++;
-			if(time1[0]>10)
+			if(time1[0]>100)
 				State.sec=UP;
 		}
 			if(State.sec==UP)
 			{
 				time1[1]++;
-		if(time1[1]>6)
+		if(time1[1]>60)
 			State.sec=BACK;
 	   }
 		if(State.sec==BACK)
 		{
 				time1[2]++;
-		if(time1[2]>4)
+		if(time1[2]>40)
 			State.sec=UP_LEFT;
 	  }
 		if(State.sec==UP_LEFT)
 		{
 			time1[3]++;
-			if(time1[3]>5)
+			if(time1[3]>50)
 			State.pri=FIND_WAY;
 		}
 		break;
@@ -96,19 +101,19 @@ void StateShift()
 		if(State.sec==UP_RIGHT)
 		{
 		 time2[0]++;
-		if(time2[0]>10)
+		if(time2[0]>100)
 		State.sec=UP;
 	}
 		if(State.sec==UP)
 		{
 		 time2[1]++;
-		if(time2[1]>12)
+		if(time2[1]>120)
 			State.sec=UP_LEFT;
 	}
 		if(State.sec==UP_LEFT)
 		{
 		 time2[2]++;
-		if(time2[1]>5)
+		if(time2[1]>80)
 		 State.pri=FIND_WAY;
 	}
 		break;
@@ -116,25 +121,25 @@ void StateShift()
     			if(State.sec==UP_RIGHT)
 			{
        time1[0]++;
-			if(time1[0]>10)
+			if(time1[0]>100)
 				State.sec=UP;
 		}
 			if(State.sec==UP)
 			{
 				time1[1]++;
-		if(time1[1]>6)
+		if(time1[1]>60)
 			State.sec=BACK;
 	   }
 		if(State.sec==BACK)
 		{
 				time1[2]++;
-		if(time1[2]>4)
+		if(time1[2]>40)
 			State.sec=UP_LEFT;
 	  }
 		if(State.sec==UP_LEFT)
 		{
 			time1[3]++;
-			if(time1[3]>5)
+			if(time1[3]>50)
 			State.pri=FIND_WAY;
 		}
 

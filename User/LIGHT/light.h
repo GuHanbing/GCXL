@@ -3,6 +3,8 @@
 #include "./sys/sys.h"
 #define LIGHT_U PAin(12) 
 #define LIGHT_R PAin(11)
+#define LIGHT_L PEin(5)
+
 #define NONE 0
 #define EXIST 1
 

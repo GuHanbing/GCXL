@@ -25,7 +25,7 @@ void control()
 
 			default:break;
 		}
-		Set_Pwm(motoL,motoR);
+		//Set_Pwm(motoL,motoR);
 	//	Set_Pwm(7199,7199);
 	}
   
