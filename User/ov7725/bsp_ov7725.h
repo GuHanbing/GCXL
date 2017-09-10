@@ -6,9 +6,9 @@
 typedef enum
 {
 	WAY=0,
-	RED,
-	BLUE,
-	GREEN,
+	RED_F,
+	BLUE_F,
+	GREEN_F,
 }show;
 
 /*摄像头配置结构体*/

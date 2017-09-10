@@ -837,22 +837,23 @@ void Show(show choice)
 	for(i = 0; i < 160; i++)
 	{
 	
-//		 if(choice==WAY)
-//		 {
-//			 if(i==Center[j]&&Center[j]!=0)
-//				 ILI9341_Write_Data(0xFFFF);
-//			 else
-//				 ILI9341_Write_Data(0);
-//			 break;
-//		 }
-//     if(choice==RED)
-//		 {
-//			 if(Red(j,i))
-//			 {
+		 if(choice==WAY)
+		 {
+			 if(i==Center[j]&&Center[j]!=0)
+				 ILI9341_Write_Data(0xFFFF);
+			 else
 				 ILI9341_Write_Data(rIMG[j][i]<<11);
-//			 }
 			 
-//		 }
+		 }
+     if(choice==RED_F)
+		 {
+			 if(Red(j,i))
+			 {
+				 ILI9341_Write_Data(rIMG[j][i]<<11);
+			 }
+			 else
+				 ILI9341_Write_Data(0);
+		 }
 		
 		
 	}

@@ -2,6 +2,7 @@
 #include "control.h"
 #include "FSM.h"
 int barrier=NONE,blackR=NONE,blackL=NONE,collisionL=NONE,collisionR=NONE;
+
 void TIM1_UP_IRQHandler(void)
 {
 	static int count=0;
@@ -10,11 +11,12 @@ void TIM1_UP_IRQHandler(void)
 		Sta_Refresh();
 		control();
 		count++;
-	}
+	
 	if(count==15)
 	{
 		count=0;
 		Analysis();
+	}
 	}
 	TIM1->SR&=~(1<<0);
 }
@@ -23,12 +25,19 @@ void TIM1_UP_IRQHandler(void)
 
 void Light_Init()
 {
-	RCC->APB2ENR|=1<<6;
+	RCC->APB2ENR|=1<<4;
+	RCC->APB2ENR|=1<<5;
 	RCC->APB2ENR|=1<<2;
-	GPIOE->CRL&=0X00FFFFFF;	//PE5,6设置成输入	  
-	GPIOE->CRL|=0X88000000;   
-	GPIOE->ODR|=1<<5;
-	GPIOE->ODR|=1<<6;
+	GPIOC->CRH&=0XFF0000FF;	//PC10，11，12，13设置成输入	  
+	GPIOC->CRH|=0X00888800;   
+	GPIOC->ODR|=1<<13;
+	GPIOC->ODR|=1<<12;
+	GPIOC->ODR|=1<<11;
+	GPIOC->ODR|=1<<10;
+	GPIOD->CRL&=0XFFFFF0FF;	//PD2设置成输入	  
+	GPIOD->CRL|=0X00000800;   
+	GPIOD->ODR|=1<<2;
+	//GPIOE->ODR|=1<<6;
 	GPIOA->CRH&=0XFFF00FFF;	//PA12设置成输入	  
 	GPIOA->CRH|=0X00088000;   
 	GPIOA->ODR|=1<<12;
@@ -86,12 +95,12 @@ void Sta_Refresh()
 		if(rT==0)
 		blackR=NONE;
 	}
-	if(PEin(6)==0)
+	if(PCin(10)==0)
 	{
 		collisionL=EXIST;
 	}
 	else
-		collisionR=NONE;
+		collisionL=NONE;
 }
 
 

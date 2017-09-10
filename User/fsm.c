@@ -5,7 +5,7 @@
 extern uint8_t rIMG[120][160];
 extern int valid;
 extern int barrier,blackR,blackL;
-sta State={FIND_WAY,CHASE_BLACK};
+sta State={START,CHASE_BLACK};
 com Command;
 
 void StateShift();
@@ -32,29 +32,34 @@ void Analysis()
 	StateHandle();
 }
 
+extern int motorFlag;
+extern int bRightFlag;
 void StateShift()
 {
 	static int time1[5]={0},time2[5]={0},time3[5]={0};
+	if(bRightFlag>0)
+		bRightFlag--;
 	switch(State.pri)
   {
 	  case START:
-		
-		
-		
-		
+		if(motorFlag)
+		{
+		State.pri=FIND_WAY;
+		State.sec=CHASE_BLACK;
+		}
 		break;
 		case FIND_WAY:
 
 			if(valid>30&&blackR==EXIST)
 			{
-				if(State.memory[BARRIER]==NEVER&&State.memory[STEP1]==NEVER&&State.memory[STEP2]==NEVER)//Ì¨½×1
+				if(State.memory[BARRIER]==NEVER&&State.memory[STEP1]==NEVER&&State.memory[STEP2]==NEVER&&bRightFlag)//Ì¨½×1
 				{
 					State.memory[STEP1]=EVER;
 				State.pri=STEP1;
 				State.sec=UP_RIGHT;
 				break;	
 				}	
-				if(State.memory[BARRIER]==EVER&&State.memory[STEP1]==EVER&&State.memory[STEP2]==NEVER)                 //Ì¨½×2
+				if(State.memory[BARRIER]==EVER&&State.memory[STEP1]==EVER&&State.memory[STEP2]==NEVER&&bRightFlag)                 //Ì¨½×2
 				{
 					State.memory[STEP2]=EVER;
 				State.pri=STEP2;
@@ -62,7 +67,7 @@ void StateShift()
 				break;
 				}						
 			}
-		if(barrier==EXIST&&State.memory[STEP1]==EVER&&State.memory[BARRIER]==NEVER&&valid<30)                        //ÕÏ°­
+		if(barrier==EXIST&&State.memory[STEP1]==EVER&&State.memory[BARRIER]==NEVER&&valid<60)                        //ÕÏ°­
 		{
 			State.memory[BARRIER]=EVER;
 				State.pri=BARRIER;

@@ -27,10 +27,7 @@ void control()
 
 			default:break;
 		}
-		if( Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON  )
-		{	
-			motorFlag=~motorFlag;
-		}
+
 		if(motorFlag)
 		 Set_Pwm(motoL,motoR);
 	//	Set_Pwm(7199,7199);

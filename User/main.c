@@ -44,7 +44,8 @@ extern OV7725_MODE_PARAM cam_mode;
   * @param  无  
   * @retval 无
   */
-show showChoice=RED;
+show showChoice=WAY;
+extern int motorFlag;
 void Show(show choice);
 int main(void) 	
 {		
@@ -124,9 +125,14 @@ int main(void)
 	
 	while(1)
 	{
+		if( Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON  )
+		{	
+			motorFlag=~motorFlag;
+		}
 		/*接收到新图像进行显示*/
 		if( Ov7725_vsync == 2 )
 		{
+
 			frame_count++;
 			FIFO_PREPARE;  			/*FIFO准备*/					
 			ImagDisp(cam_mode.lcd_sx,

@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 #include "math.h"
 
-#define CENTER 95
+#define CENTER 82
 
 
 

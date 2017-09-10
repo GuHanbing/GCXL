@@ -34,7 +34,7 @@ void FindWay(uint8_t img[][160],int black)
 	int width[120]={0};
 	int bLeft=0,bRight=0;
 	memset(Center,0,sizeof(Center));
-	for(row=119;row>=100;row--)
+	for(row=110;row>=100;row--)
 	{
 		for(col=0;col<=158;col++)
 		{
@@ -90,33 +90,44 @@ void FindWay(uint8_t img[][160],int black)
 			  }
 			  if(bFlag==1)
 				{
+
 					if(img[row][col]<black)
 				 {
 					width[row]++;
+					if(width[row]>=15&&row>80)
+				{
+					bEd=col;
+				 if(Center[row+1]-width[row+1]/2-bSt>=6&&bEd-(Center[row+1]+width[row+1]/2)<=6)
+				{
+					bLeft++;
+					Center[row]=Center[row+1];
+					width[row]=width[row+1];
+					
+				}    
+				 if(bEd-(Center[row+1]+width[row+1]/2)>=6&&Center[row+1]-width[row+1]/2-bSt<=6)
+				{
+					bRight++;
+					Center[row]=Center[row+1];
+					width[row]=width[row+1];
+					
+				} 
+									 bFlag=0;
+           break;
+				}
 				 }
 				 else
 				 {
-					if(width[row]>=3&&width[row]<25)
+
+					if(width[row]>=3&&width[row]<15)
 					{
 					 bEd=col;
 					 Center[row]=(bSt+bEd)/2;
-					if(Center[row+1]-width[row+1]/2-bSt>=10)
-					{
-						bLeft++;
-						Center[row]=Center[row+1];
-						width[row]=width[row+1];
-					  
-				  }    
-					if(bEd-(Center[row+1]+width[row+1]/2)>=10)
-					{
-						bRight++;
-						Center[row]=Center[row+1];
-						width[row]=width[row+1];
-					  
-				  } 
+
+
+				 }
+
 					 bFlag=0;
            break;
-				 }
 		  	}  
 		
 		 }
@@ -130,9 +141,8 @@ void FindWay(uint8_t img[][160],int black)
 //	else
 //		bLeftFlag=0;
 	if(bRight>=5)
-		bRightFlag=1;
-	else
-		bRightFlag=0;	
+		bRightFlag=150;
+
 }
 
 int valid=0;
@@ -174,7 +184,7 @@ void Calc_Center_Error()
 
 int Red(int line,int col)
 {
-	 if(rIMG[line][col]>gIMG[line][col]/2+bIMG[line][col]-10&&rIMG[line][col]>9)
+	 if(rIMG[line][col]>gIMG[line][col]/2+bIMG[line][col]-7&&rIMG[line][col]>8)
 		 return 1;
 	 else
 		 return 0;
