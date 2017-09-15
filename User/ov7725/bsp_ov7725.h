@@ -9,6 +9,7 @@ typedef enum
 	RED_F,
 	BLUE_F,
 	GREEN_F,
+	WHITE_F,
 }show;
 
 /*摄像头配置结构体*/

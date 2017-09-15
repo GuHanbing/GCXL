@@ -47,6 +47,8 @@ extern OV7725_MODE_PARAM cam_mode;
 show showChoice=WAY;
 extern int motorFlag;
 void Show(show choice);
+void FindBlock_R();
+void FindBlock_W();
 int main(void) 	
 {		
 	
@@ -143,6 +145,8 @@ int main(void)
 			Ov7725_vsync = 0;			
 			LED1_TOGGLE;
       Data_precondition();
+			//FindBlock_R();
+		//	FindBlock_W();
 	    Show(showChoice);
 		}
 		

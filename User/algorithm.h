@@ -4,7 +4,7 @@
 #include "stm32f10x.h"
 #include "math.h"
 
-#define CENTER 82
+#define CENTER 80
 
 
 
@@ -29,7 +29,7 @@ typedef struct
 	int center_x;
 	int center_y;
 }Block;
-void FindWay(uint8_t img[][160],int black);
+void FindWay(uint8_t img[][160],int black,int flag);
 void Calc_Center_Error(void);
 
 

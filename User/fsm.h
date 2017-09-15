@@ -13,6 +13,7 @@ typedef	enum
 		BACK_LEFT,
 		BACK_RGHT,
     CHASE_BLACK,
+	  CHASE_BLACK_C,
 }whe;
 
 

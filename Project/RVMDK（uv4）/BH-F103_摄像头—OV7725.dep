@@ -701,7 +701,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_spi.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_tim.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
-F (..\..\User\main.c)(0x59B3E080)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x59BBE76B)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -730,7 +730,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_tim.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
-I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B3CA4B)
+I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B7D28B)
 I (..\..\User\./lcd/bsp_ili9341_lcd.h)(0x58394B95)
 I (..\..\User\./font/fonts.h)(0x57E62C98)
 I (..\..\User\./led/bsp_led.h)(0x57C77897)
@@ -742,11 +742,11 @@ I (..\..\User\./sys/sys.h)(0x550EC367)
 I (..\..\User\./MOTOR/motor.h)(0x59A51F2C)
 I (..\..\User\./ENCODER/encoder.h)(0x59A3A61F)
 I (..\..\User\./PID/pid.h)(0x59A3A626)
-I (..\..\User\algorithm.h)(0x59B3CCA9)
+I (..\..\User\algorithm.h)(0x59B87FCC)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x53463A44)
 I (..\..\User\control.h)(0x59AA3EE6)
-I (..\..\User\./LIGHT/light.h)(0x59B3BA61)
-I (..\..\User\FSM.h)(0x59B3A2F5)
+I (..\..\User\./LIGHT/light.h)(0x59B4D8F3)
+I (..\..\User\FSM.h)(0x59BBFAEE)
 F (..\..\User\stm32f10x_it.c)(0x5837E735)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\stm32f10x_it.o --omf_browse ..\..\output\stm32f10x_it.crf --depend ..\..\output\stm32f10x_it.d)
 I (..\..\User\stm32f10x_it.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
@@ -777,10 +777,10 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_tim.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
-I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B3CA4B)
+I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B7D28B)
 I (..\..\User\./systick/bsp_SysTick.h)(0x56026963)
-F (..\..\User\ov7725\bsp_ov7725.c)(0x59B3CDFE)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_ov7725.o --omf_browse ..\..\output\bsp_ov7725.crf --depend ..\..\output\bsp_ov7725.d)
-I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B3CA4B)
+F (..\..\User\ov7725\bsp_ov7725.c)(0x59B8C5F5)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_ov7725.o --omf_browse ..\..\output\bsp_ov7725.crf --depend ..\..\output\bsp_ov7725.d)
+I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B7D28B)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -815,6 +815,8 @@ I (..\..\User\./font/fonts.h)(0x57E62C98)
 I (..\..\User\./usart/bsp_usart.h)(0x599BCAD1)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x53463A44)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x53463A44)
+I (..\..\User\algorithm.h)(0x59B87FCC)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x53463A44)
 F (..\..\User\sccb\bsp_sccb.c)(0x58534D46)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\bsp_sccb.o --omf_browse ..\..\output\bsp_sccb.crf --depend ..\..\output\bsp_sccb.d)
 I (..\..\User\./sccb/bsp_sccb.h)(0x58380998)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
@@ -1027,9 +1029,9 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_tim.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
-F (..\..\User\algorithm.c)(0x59B3EF09)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\algorithm.o --omf_browse ..\..\output\algorithm.crf --depend ..\..\output\algorithm.d)
-I (..\..\User\algorithm.h)(0x59B3CCA9)
-I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B3CA4B)
+F (..\..\User\algorithm.c)(0x59BBCC93)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\algorithm.o --omf_browse ..\..\output\algorithm.crf --depend ..\..\output\algorithm.d)
+I (..\..\User\algorithm.h)(0x59B87FCC)
+I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B7D28B)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -1186,7 +1188,7 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_tim.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
-F (..\..\User\control.c)(0x59B3D8E2)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\control.o --omf_browse ..\..\output\control.crf --depend ..\..\output\control.d)
+F (..\..\User\control.c)(0x59BC291F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\control.o --omf_browse ..\..\output\control.crf --depend ..\..\output\control.d)
 I (..\..\User\control.h)(0x59AA3EE6)
 I (..\..\User\./MOTOR/motor.h)(0x59A51F2C)
 I (..\..\User\./sys/sys.h)(0x550EC367)
@@ -1219,10 +1221,10 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\User\FSM.h)(0x59B3A2F5)
+I (..\..\User\FSM.h)(0x59BBFAEE)
 I (..\..\User\./key/bsp_key.h)(0x57B3E0C6)
-F (..\..\User\LIGHT\light.c)(0x59B3EF09)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\light.o --omf_browse ..\..\output\light.crf --depend ..\..\output\light.d)
-I (..\..\User\./LIGHT/light.h)(0x59B3BA61)
+F (..\..\User\LIGHT\light.c)(0x59BC02B8)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\light.o --omf_browse ..\..\output\light.crf --depend ..\..\output\light.d)
+I (..\..\User\./LIGHT/light.h)(0x59B4D8F3)
 I (..\..\User\./sys/sys.h)(0x550EC367)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x53B6A0AB)
@@ -1254,10 +1256,10 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
 I (..\..\User\control.h)(0x59AA3EE6)
 I (..\..\User\./MOTOR/motor.h)(0x59A51F2C)
-I (..\..\User\FSM.h)(0x59B3A2F5)
+I (..\..\User\FSM.h)(0x59BBFAEE)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x53463A44)
-F (..\..\User\fsm.c)(0x59B3EF09)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\fsm.o --omf_browse ..\..\output\fsm.crf --depend ..\..\output\fsm.d)
-I (..\..\User\FSM.h)(0x59B3A2F5)
+F (..\..\User\fsm.c)(0x59BC283A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\..\Libraries\CMSIS -I..\..\User -I..\..\Libraries\FWlib\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.1.0\Device\Include-DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\..\output\fsm.o --omf_browse ..\..\output\fsm.crf --depend ..\..\output\fsm.d)
+I (..\..\User\FSM.h)(0x59BBFAEE)
 I (..\..\Libraries\CMSIS\stm32f10x.h)(0x53B6A0AB)
 I (..\..\Libraries\CMSIS\core_cm3.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -1287,8 +1289,9 @@ I (..\..\Libraries\FWlib\inc\stm32f10x_usart.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\stm32f10x_wwdg.h)(0x53B6A0AB)
 I (..\..\Libraries\FWlib\inc\misc.h)(0x53B6A0AB)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x53463A44)
-I (..\..\User\algorithm.h)(0x59B3CCA9)
-I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B3CA4B)
-I (..\..\User\./LIGHT/light.h)(0x59B3BA61)
+I (..\..\User\algorithm.h)(0x59B87FCC)
+I (..\..\User\./ov7725/bsp_ov7725.h)(0x59B7D28B)
+I (..\..\User\./LIGHT/light.h)(0x59B4D8F3)
 I (..\..\User\./sys/sys.h)(0x550EC367)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x53463A44)
 F (..\..\Doc\readme.txt)(0x58534D45)()

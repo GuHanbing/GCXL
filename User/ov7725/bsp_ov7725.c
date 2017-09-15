@@ -20,6 +20,7 @@
 #include "./lcd/bsp_ili9341_lcd.h"
 #include "./usart/bsp_usart.h"
 #include "stdlib.h"
+#include "algorithm.h"
 //uint8_t (* IMG)[320];
 
 uint8_t rIMG[120][160];
@@ -769,6 +770,8 @@ void printf_Pixel(unsigned char ch)
 	while((USART1->SR&0X40)==0);//????,??????   
 	USART1->DR = (uint8_t) ch;  
 }
+
+
 /**
   * @brief  设置显示位置
 	* @param  sx:x起始显示位置
@@ -826,10 +829,13 @@ void WayShow(int cen[],uint16_t width,uint16_t height)
 }
 
 extern int Center[119];
+extern Block rBlock[30];
+extern Block wBlock[30];
 int Red(int line,int col);
+int White(int line,int col);
 void Show(show choice)
 {
-		uint16_t i, j; 
+		uint16_t i, j,k; 
 		ILI9341_OpenWindow(0,0,160,120);
 	ILI9341_Write_Cmd ( CMD_SetPixel );	
  for(j = 0; j < 120; j++)
@@ -854,8 +860,38 @@ void Show(show choice)
 			 else
 				 ILI9341_Write_Data(0);
 		 }
+		if(choice==WHITE_F)
+		 {
+			  if(White(j,i))
+			 {
+				 ILI9341_Write_Data(0xFFFF);
+			 }
+			 else
+				 ILI9341_Write_Data(0);
+		 }
 		
-		
+	}
+ }
+	if(choice==RED_F)
+ {
+ for(k=0;k<=10;k++)
+	{
+		if(rBlock[k].num!=0)
+		{
+
+			ILI9341_DrawCircle (rBlock[k].center_x+CENTER,119-rBlock[k].center_y,10,1);
+		}
+	}
+ }
+ 	if(choice==WHITE_F)
+ {
+ for(k=0;k<=10;k++)
+	{
+		if(wBlock[k].num!=0)
+		{
+
+			ILI9341_DrawCircle (wBlock[k].center_x+CENTER,119-wBlock[k].center_y,3,1);
+		}
 	}
  }
 }

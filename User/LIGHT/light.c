@@ -1,22 +1,22 @@
 #include "./LIGHT/light.h"
 #include "control.h"
 #include "FSM.h"
-int barrier=NONE,blackR=NONE,blackL=NONE,collisionL=NONE,collisionR=NONE;
+int barrier=NONE,blackR=NONE,blackL=NONE,blackUR=NONE,blackUL=NONE,collisionL=NONE,collisionR=NONE;
 
 void TIM1_UP_IRQHandler(void)
 {
 	static int count=0;
 	if(TIM1->SR&0X0001)
 	{
-		Sta_Refresh();
-		control();
-		count++;
-	
-	if(count==15)
-	{
-		count=0;
-		Analysis();
-	}
+			Sta_Refresh();
+			control();
+			count++;
+		
+		if(count==10)
+		{
+			count=0;
+			Analysis();
+		}
 	}
 	TIM1->SR&=~(1<<0);
 }
@@ -83,17 +83,31 @@ void Sta_Refresh()
 		if(rT==0)
 		blackR=NONE;
 	}
-		if(LIGHT_L==1)
+		if(PCin(11)==1)
+	{
+		blackUL=EXIST;
+	
+	}
+	else
+	{
+   blackUL=NONE;
+	}
+			if(PCin(12)==1)
+	{
+    blackUR=EXIST;
+	}
+	else
+	{
+   blackUR=NONE;
+	}
+			if(LIGHT_L==1)
 	{
 		blackL=EXIST;
 		rT=50;
 	}
 	else
 	{
-				if(rT>0)
-		rT--;
-		if(rT==0)
-		blackR=NONE;
+   
 	}
 	if(PCin(10)==0)
 	{

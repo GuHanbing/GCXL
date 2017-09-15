@@ -8,13 +8,11 @@ int Center[120];
 int bLeftFlag=0;
 int bRightFlag=0;
 double cErr=0;
-
-
 int Max(int a,int b)
-{
-if(a>b)
+{	
+ if(a>b)
 	return a;
-else
+ else
 	return b;
 }
 
@@ -26,15 +24,18 @@ else
 	return b;
 }
 
-void FindWay(uint8_t img[][160],int black)
+int valid=0;
+int last_line=0;
+void FindWay(uint8_t img[][160],int black,int flag)
 {
-	int col,row,stRow;
+	int col,row,stRow,mis=0;
 	int stFlag=0,bFlag=0;
 	int bSt,bEd;
 	int width[120]={0};
 	int bLeft=0,bRight=0;
 	memset(Center,0,sizeof(Center));
-	for(row=110;row>=100;row--)
+	valid=0;
+	for(row=119;row>=100;row--)
 	{
 		for(col=0;col<=158;col++)
 		{
@@ -60,6 +61,7 @@ void FindWay(uint8_t img[][160],int black)
 					Center[row]=(bSt+bEd)/2;
 					stFlag=1;
 						stRow=row;
+						valid++;
 						break;
 					}
 
@@ -79,9 +81,16 @@ void FindWay(uint8_t img[][160],int black)
 	{
 		for(row=stRow-1;row>=10;row--)
 		{
+			
+			if(bFlag==0)
+				mis++;
+			if(mis>=6&&bRight==0&&bLeft==0)
+				break;
 			bFlag=0;
 			for(col=Max(Center[row+1]-15,1);col<=Min(Center[row+1]+15,158);col++)
 			{
+				           if(row==81)
+						 row=81;
 				if(bFlag==0&&img[row][col]<black)
 			  {
 				 bSt=col;
@@ -90,44 +99,46 @@ void FindWay(uint8_t img[][160],int black)
 			  }
 			  if(bFlag==1)
 				{
-
+           if(row==81)
+						 row=81;
 					if(img[row][col]<black)
 				 {
 					width[row]++;
-					if(width[row]>=15&&row>80)
+					if(width[row]>=15&&row>60&&flag)
 				{
 					bEd=col;
-				 if(Center[row+1]-width[row+1]/2-bSt>=6&&bEd-(Center[row+1]+width[row+1]/2)<=6)
+				 if((Center[row+1]-width[row+1]/2-bSt>=6&&bEd-(Center[row+1]+width[row+1]/2)<=6)||bLeft>0)
 				{
 					bLeft++;
 					Center[row]=Center[row+1];
 					width[row]=width[row+1];
-					
+					valid++;
+					break;
 				}    
-				 if(bEd-(Center[row+1]+width[row+1]/2)>=6&&Center[row+1]-width[row+1]/2-bSt<=6)
+				 if(bEd-(Center[row+1]+width[row+1]/2)>=6&&(Center[row+1]-width[row+1]/2-bSt<=6||bRight>0))
 				{
 					bRight++;
 					Center[row]=Center[row+1];
 					width[row]=width[row+1];
-					
+					valid++;
+					break;
 				} 
-									 bFlag=0;
-           break;
+									
+           
 				}
 				 }
 				 else
 				 {
-
-					if(width[row]>=3&&width[row]<15)
+          bFlag=0;
+					if(width[row]>=3&&width[row]<20&&fabs((bSt+bEd)/2-Center[row+1])<=6)
 					{
 					 bEd=col;
 					 Center[row]=(bSt+bEd)/2;
-
-
-				 }
-
-					 bFlag=0;
+            bFlag=1;
+						valid++;
+						last_line=row;
            break;
+				 }       
 		  	}  
 		
 		 }
@@ -136,50 +147,59 @@ void FindWay(uint8_t img[][160],int black)
 		
  }
 	}
-//	if(bLeft>=5)
-//		bLeftFlag=1;
-//	else
-//		bLeftFlag=0;
-	if(bRight>=5)
-		bRightFlag=150;
+	if(bLeft>=5)
+		bLeftFlag=1;
+	else
+		bLeftFlag=0;
+	if(bRight>=3)
+		bRightFlag=320;
 
 }
 
-int valid=0;
+
 void Calc_Center_Error()
 {
 	static double last_err=0;
 	int i=0;
 	double sum=0;
-	valid=0;
-	for(i=80;i<120;i++)
+	int val=0;
+	for(i=119;i>=80;i--)
 	{
 		if(Center[i]!=0)
 		{
-			sum+=(double)(Center[i]-95)/18.0;
-			valid++;
+			sum+=((double)(Center[i]-CENTER	)*1.0/110)*sqrt(val);
+			val++;
 		}
 	}
 	if(valid>20)
 	{
-	  cErr=sum/i;
-		cErr*=40.0/valid;
+	  cErr=sum/val;
+		cErr*=sqrt(fabs(cErr));
+	//	sum*=70.0/sqrt(fabs(valid));
 		last_err=cErr;
+		 //cErr=(cErr+)
 	}
 	else
 	{
 		if(last_err<-0.1)
-			cErr=-1.5;
-				if(last_err>0.1)
-			cErr=1.5;
+			cErr=-1.3;
+		else		if(last_err>0.1)
+			cErr=1.3;
+		else
+		{
+			if(Center[last_line]>CENTER)
+				cErr=1.3;
+			else
+				cErr=-1.3;
+		}
 	}
-//	if(fabs(cErr)<0.3)
+//	if(fabs(cErr)<0.4)
 //		cErr*=0.4;
-	if(cErr<-1)
+	if(cErr<-1&&cErr!=-1.3)
 		cErr=-1;
-	if(cErr>1)
+	if(cErr>1&cErr!=1.3)
 		cErr=1;	
-	//WayShow(Center,160,120);
+	
 }
 
 int Red(int line,int col)
@@ -190,67 +210,102 @@ int Red(int line,int col)
 		 return 0;
 }
 
-
-//色块识别
-int CreateTuan(Tuan (*tuan)[5],int No,int Line,int St,int Ed,int Max);
-int CreateBlock(Tuan (*tuan)[5],Block * block);
-
-Tuan rTuan[120][5];
-Block rBlock[30];
-void FindBlock_R()
+int Green(int line,int col)
 {
-	int line,col;
-	int st,ed,Bwidth=0,No=0;
-	int flag=0;
-	int Max=0;
-	memset(rTuan,0,sizeof(Tuan)*1200);
-	memset(rBlock,0,sizeof(Block)*10);
-	for(line=0;line<=119;line++)
-	{
-		flag=0;
-		No=0;
-		for(col=0;col<=159;col++)
-		{
-		if(flag==0)
-		 {
-			if(Red(line,col))
-			{
-				flag=1;
-				Bwidth=0;
-				st=col;
-			}
-		 }
-		 if(flag==1)
-		 {
-			 if(Red(line,col))
-			{
-				ed=col;
-			}
-			else
-			{
-				Bwidth++;
-				if(Bwidth>=8)
-				{
-					flag=0;
-					if(ed-st+1>=14)
-					{
-						 CreateTuan(rTuan,No,line,st,ed,Max);
-											if(rTuan[line][No].num>Max)
-            Max=rTuan[line][No].num;     						
-					No++;
-					if(No>4)
-						break;
-					}
-
-
-				}
-			}
-		 }
-		}
-	}
- int valid=CreateBlock(rTuan,rBlock);   
+	 if(gIMG[line][col]>rIMG[line][col]/2+bIMG[line][col]-7&&gIMG[line][col]>8)
+		 return 1;
+	 else
+		 return 0;
 }
 
+int Blue(int line,int col)
+{
+	 if(bIMG[line][col]>gIMG[line][col]/2+rIMG[line][col]-7&&bIMG[line][col]>8)
+		 return 1;
+	 else
+		 return 0;
+}
+
+int White(int line,int col)
+{
+	 if(bIMG[line][col]>25&&rIMG[line][col]>25&&gIMG[line][col]>50)
+		 return 1;
+	 else
+		 return 0;
+}
+
+//色块识别
+typedef int (*fun_ptr)(int,int);
+int CreateTuan(Tuan (*tuan)[5],int No,int Line,int St,int Ed,int Max);
+int CreateBlock(Tuan (*tuan)[5],Block * block,int min,int expect);
+void FindBlock(char s,Block * block,int limit,int expect);
+//Tuan rTuan[120][5];
+Block rBlock[12];
+Block gBlock[12];
+Block bBlock[12];
+Block wBlock[12];
+
+void FindBlock_R()
+{
+//	int line,col;
+//	int st,ed,Bwidth=0,No=0;
+//	int flag=0;
+//	int Max=0;
+//	Tuan rTuan[120][5];
+//	
+//	memset(rBlock,0,sizeof(Block)*10);
+//	for(line=0;line<=119;line++)
+//	{
+//		flag=0;
+//		No=0;
+//		for(col=0;col<=159;col++)
+//		{
+//		if(flag==0)
+//		 {
+//			if(Red(line,col))
+//			{
+//				flag=1;
+//				Bwidth=0;
+//				st=col;
+//			}
+//		 }
+//		 if(flag==1)
+//		 {
+//			 if(Red(line,col))
+//			{
+//				ed=col;
+//			}
+//			else
+//			{
+//				Bwidth++;
+//				if(Bwidth>=8)
+//				{
+//					flag=0;
+//					if(ed-st+1>=14)
+//					{
+//						 CreateTuan(rTuan,No,line,st,ed,Max);
+//											if(rTuan[line][No].num>Max)
+//            Max=rTuan[line][No].num;     						
+//					No++;
+//					if(No>4)
+//						break;
+//					}
+
+
+//				}
+//			}
+//		 }
+//		}
+//	}
+// int valid=CreateBlock(rTuan,rBlock,70,2);   
+FindBlock('r',rBlock,120,2);
+}
+
+void FindBlock_W()
+{
+
+ FindBlock('w',wBlock,5,1);
+}
 
 void ChangNo(Tuan (*tuan)[5],int Line,int origin,int change)
 {
@@ -277,6 +332,7 @@ int CreateTuan(Tuan (*tuan)[5],int No,int Line,int St,int Ed,int Max)
 		tuan[Line][No].num=Max+1;
 		return 0;
 	}
+	else
 	while(tuan[line][i].num!=0&&i<=4)
 	{
 		if((tuan[line][i].st>=St&&tuan[line][i].st<=Ed)||(tuan[line][i].ed>=St&&tuan[line][i].ed<=Ed))
@@ -306,8 +362,9 @@ int CreateTuan(Tuan (*tuan)[5],int No,int Line,int St,int Ed,int Max)
 	return 0;
 }
 
-int CreateBlock(Tuan (*tuan)[5],Block * block)
+int CreateBlock(Tuan (*tuan)[5],Block * block,int min,int expect)
 {
+	
 	int i,j=0,k,valid=0;
 	for(i=0;i<=119;i++)
 	{
@@ -316,6 +373,7 @@ int CreateBlock(Tuan (*tuan)[5],Block * block)
 		{
 			k=tuan[i][j].num;
 			block[k].area+=tuan[i][j].ed-tuan[i][j].st+1;
+			block[k].num=k;
 			if(block[k].top==0)
 			{
 				block[k].top=i;
@@ -332,15 +390,88 @@ int CreateBlock(Tuan (*tuan)[5],Block * block)
 			j++;
 		}
 	}
-	for(k=0;k<=10;k++)
+	for(k=0;k<10;k++)
 	{
-		if(block[k].top!=0&&block[k].area>70)
+		if(block[k].num!=0)
 		{
+			if(block[k].area>min)
+			{
 			valid++;
 			block[k].center_x=(block[k].left+block[k].right)/2-CENTER;
 			block[k].center_y=119-(block[k].top+block[k].buttom)/2;
 			ILI9341_DrawCircle (block[k].center_x+CENTER,119-block[k].center_y,10,1);
+			}
+			else
+				block[k].num=0;
 		}
 	}
 	return valid;
+}
+
+
+
+
+
+void FindBlock(char s,Block * block,int limit,int expect)
+{
+	int line,col,color=0;
+	int st,ed,Bwidth=0,No=0;
+	int flag=0;
+	int Max=0;
+	Tuan tuan[120][5]={0};
+	
+	memset(block,0,sizeof(Block)*12);
+	for(line=0;line<=119;line++)
+	{
+		flag=0;
+		No=0;
+		for(col=0;col<=159;col++)
+		{
+			switch(s)
+			{
+				case 'r':color=Red(line,col);break;
+				case 'g':color=Green(line,col);break;
+				case 'b':color=Blue(line,col);break;
+				case 'w':color=White(line,col);break;
+				default:break;
+			}
+		if(flag==0)
+		 {
+			if(color)
+			{
+				flag=1;
+				Bwidth=0;
+				st=col;
+			}
+		 }
+		 if(flag==1)
+		 {
+			 if(color)
+			{
+				ed=col;
+			}
+			else
+			{
+				Bwidth++;
+				if(Bwidth>=3)
+				{
+					flag=0;
+					if(ed-st+1>=3)
+					{
+						 CreateTuan(tuan,No,line,st,ed,Max);
+											if(tuan[line][No].num>Max)
+            Max=tuan[line][No].num;     						
+					No++;
+					if(No>4)
+						break;
+					}
+
+
+				}
+			}
+		 }
+		}
+	}
+ int valid=CreateBlock(tuan,block,limit,expect);  
+
 }
