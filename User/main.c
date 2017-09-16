@@ -73,7 +73,7 @@ int main(void)
 	SysTick_Init();
 	
 	 MiniBalance_Motor_Init();
-	 MiniBalance_PWM_Init(7199,7199);
+	 MiniBalance_PWM_Init(719,5);
 	// Set_Pwm(6200,-6200);
 	printf("\r\n ** OV7725摄像头实时液晶显示例程** \r\n"); 
 	Light_Init();

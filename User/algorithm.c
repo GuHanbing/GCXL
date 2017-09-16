@@ -55,7 +55,7 @@ void FindWay(uint8_t img[][160],int black,int flag)
 			{
 				if(bFlag==1)
 				{
-					if(width[row]>=5&&width[row]<25)
+					if(width[row]>=5&&width[row]<20)
 					{
 						bEd=col;
 					Center[row]=(bSt+bEd)/2;
@@ -130,7 +130,7 @@ void FindWay(uint8_t img[][160],int black,int flag)
 				 else
 				 {
           bFlag=0;
-					if(width[row]>=3&&width[row]<20&&fabs((bSt+bEd)/2-Center[row+1])<=6)
+					if(width[row]>=3&&width[row]<25&&fabs((bSt+bEd)/2-Center[row+1])<=6)
 					{
 					 bEd=col;
 					 Center[row]=(bSt+bEd)/2;
@@ -152,7 +152,7 @@ void FindWay(uint8_t img[][160],int black,int flag)
 	else
 		bLeftFlag=0;
 	if(bRight>=3)
-		bRightFlag=320;
+		bRightFlag=520;
 
 }
 

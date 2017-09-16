@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\OV7725.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\OV7725.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5040049: Last Updated: Sat Sep 16 03:25:20 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5040049: Last Updated: Sun Sep 17 01:27:39 2017
 <BR><P>
 <H3>Maximum Stack Usage =        632 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -360,7 +360,6 @@ Global Symbols
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Center_Error
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
@@ -384,10 +383,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Straight
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Center_Error
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateHandle
 </UL>
 
 <P><STRONG><a name="[5c]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
@@ -403,7 +402,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindWay
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Center_Error
 </UL>
@@ -413,20 +412,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Straight
+<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Straight
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 </UL>
 
 <P><STRONG><a name="[69]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, cdcmple.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Center_Error
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateHandle
 </UL>
 
 <P><STRONG><a name="[67]"></a>__aeabi_cdcmple</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, cdcmple.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindWay
+<BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FindWay
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Center_Error
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_Right_Judge
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_Left_Judge
@@ -512,7 +511,7 @@ Global Symbols
 <P><STRONG><a name="[e1]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[62]"></a>Analysis</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, fsm.o(i.Analysis))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Analysis &rArr; StateHandle &rArr; SendCommand
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = Analysis &rArr; StateHandle &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateShift
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateHandle
@@ -538,11 +537,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Data_precondition
 </UL>
 
-<P><STRONG><a name="[6a]"></a>Calc_Motor</STRONG> (Thumb, 212 bytes, Stack size 56 bytes, control.o(i.Calc_Motor))
+<P><STRONG><a name="[6a]"></a>Calc_Motor</STRONG> (Thumb, 320 bytes, Stack size 56 bytes, control.o(i.Calc_Motor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = Calc_Motor &rArr; __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
@@ -1049,34 +1049,37 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b8]"></a>Sta_Refresh</STRONG> (Thumb, 186 bytes, Stack size 0 bytes, light.o(i.Sta_Refresh))
+<P><STRONG><a name="[b8]"></a>Sta_Refresh</STRONG> (Thumb, 188 bytes, Stack size 0 bytes, light.o(i.Sta_Refresh))
 <BR><BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 </UL>
 
-<P><STRONG><a name="[64]"></a>StateHandle</STRONG> (Thumb, 404 bytes, Stack size 88 bytes, fsm.o(i.StateHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = StateHandle &rArr; SendCommand
+<P><STRONG><a name="[64]"></a>StateHandle</STRONG> (Thumb, 358 bytes, Stack size 80 bytes, fsm.o(i.StateHandle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = StateHandle &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendCommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Analysis
 </UL>
 
-<P><STRONG><a name="[63]"></a>StateShift</STRONG> (Thumb, 434 bytes, Stack size 8 bytes, fsm.o(i.StateShift))
+<P><STRONG><a name="[63]"></a>StateShift</STRONG> (Thumb, 440 bytes, Stack size 8 bytes, fsm.o(i.StateShift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = StateShift &rArr; Step_shift &rArr; Step_Right_Judge
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_shift
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_Left_Judge
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Analysis
 </UL>
 
-<P><STRONG><a name="[b3]"></a>Step_Left_Judge</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, fsm.o(i.Step_Left_Judge))
+<P><STRONG><a name="[b3]"></a>Step_Left_Judge</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, fsm.o(i.Step_Left_Judge))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Step_Left_Judge
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_shift
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StateShift
 </UL>
 
 <P><STRONG><a name="[b4]"></a>Step_Right_Judge</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, fsm.o(i.Step_Right_Judge))
@@ -1087,7 +1090,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Step_shift
 </UL>
 
-<P><STRONG><a name="[b2]"></a>Step_shift</STRONG> (Thumb, 332 bytes, Stack size 8 bytes, fsm.o(i.Step_shift))
+<P><STRONG><a name="[b2]"></a>Step_shift</STRONG> (Thumb, 500 bytes, Stack size 8 bytes, fsm.o(i.Step_shift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Step_shift &rArr; Step_Right_Judge
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
@@ -1128,7 +1131,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
 <P><STRONG><a name="[23]"></a>TIM1_UP_IRQHandler</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, light.o(i.TIM1_UP_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = TIM1_UP_IRQHandler &rArr; control &rArr; Calc_Motor &rArr; __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = TIM1_UP_IRQHandler &rArr; control &rArr; Calc_Motor &rArr; __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Analysis
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sta_Refresh
@@ -1144,11 +1147,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[ba]"></a>Turn</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, control.o(i.Turn))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = Turn &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[ba]"></a>Turn</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, control.o(i.Turn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Turn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;control
 </UL>
@@ -1211,18 +1214,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
-<P><STRONG><a name="[b9]"></a>control</STRONG> (Thumb, 324 bytes, Stack size 88 bytes, control.o(i.control))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = control &rArr; Calc_Motor &rArr; __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
+<P><STRONG><a name="[b9]"></a>control</STRONG> (Thumb, 176 bytes, Stack size 72 bytes, control.o(i.control))
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = control &rArr; Calc_Motor &rArr; __aeabi_drsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadCommand
+<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadCommand
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Turn
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Straight
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Calc_Motor
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_Pwm
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM1_UP_IRQHandler
 </UL>

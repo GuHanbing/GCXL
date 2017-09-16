@@ -100,14 +100,13 @@ void Sta_Refresh()
 	{
    blackUR=NONE;
 	}
-			if(LIGHT_L==1)
+			if(PDin(2)==0)
 	{
-		blackL=EXIST;
-		rT=50;
+    collisionR=EXIST;
 	}
 	else
 	{
-   
+   collisionR=NONE;
 	}
 	if(PCin(10)==0)
 	{
