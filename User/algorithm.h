@@ -29,7 +29,7 @@ typedef struct
 	int center_x;
 	int center_y;
 }Block;
-void FindWay(uint8_t img[][160],int black,int flag);
+void FindWay(uint8_t img[][160],int black,int flag,int left,int right);
 void Calc_Center_Error(void);
 
 

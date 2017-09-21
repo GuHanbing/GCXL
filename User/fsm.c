@@ -21,10 +21,10 @@ void Data_precondition()
 	}
 	else
 	{
-		if(State.sec==UP_RIGHT)
-			FindWay(rIMG,5,0);
+		if(State.pri==STEP1||State.pri==STEP2)
+			FindWay(rIMG,5,0,0,159);
 		else
-	    FindWay(rIMG,5,1);
+	    FindWay(rIMG,5,1,50,100);
 	Calc_Center_Error();
 	}
 	
@@ -88,6 +88,8 @@ void StateShift()
     break;	
 		
     case STEP1:
+					  if( State.sec==CHASE_BLACK_C&&(blackUL==EXIST||blackUR==EXIST))
+				State.sec=CHASE_BLACK;
 		Step_shift();	
 		break;
 		case BARRIER:
@@ -119,6 +121,8 @@ void StateShift()
 	}
 		break;
     case STEP2:
+			if( State.sec==CHASE_BLACK_C&&(blackUL==EXIST||blackUR==EXIST))
+				State.sec=CHASE_BLACK;
     Step_shift();
    	break;
 		case STOP:
@@ -128,12 +132,14 @@ void StateShift()
     break;
 		default:break;
 	}
+//	State.pri=STEP2;
+//	State.sec=UP;
 }
 
 extern int collisionL,collisionR;
 int Step_shift()
 {
-	static int time1[7]={0,0,0,0,0,0,0},pos=0;
+	static int time1[11]={0,0,0,0,0,0,0},pos=0;
 	if( clrFlag==1)
 	{
 		clrFlag=0;
@@ -154,8 +160,8 @@ int Step_shift()
 		{
 			time1[4]++;
 			if(blackR==EXIST)
-			time1[4]=100;
-		if(time1[4]>130)
+			time1[4]=200;
+		if(time1[4]>205)
 		{
 			State.sec=UP_RIGHT;
 			pos++;
@@ -169,20 +175,32 @@ int Step_shift()
 				{
 					if(1==Step_Right_Judge())
 					{
-						State.sec=UP;
+						State.sec=BACK;
 			      pos++;
 						return 0;
 					}
 				}
 			if(time1[0]>960)
 			{
-				State.sec=UP;
+				State.sec=BACK;
 			  pos++;
 		  }				
 			return 0;
 		}
-			if(State.sec==UP&&pos==3)
+		if(State.sec==BACK&&pos==3)
+		{
+				time1[9]++;
+			if(time1[9]>90)
 			{
+				State.sec=CHASE_BLACK_C;
+				pos++;
+			}
+		return 0;
+	  }	
+			if(pos==4)
+			{
+				if(fabs(cErr)>0.3)
+					cErr=0;
 			 time1[1]++;
 		   if(time1[1]>360||(collisionL==EXIST&&collisionR==EXIST))
 			 {
@@ -191,7 +209,7 @@ int Step_shift()
 		   }				 
 			 return 0;
 	   }
-		if(State.sec==STAY&&pos==4)
+		if(State.sec==STAY&&pos==5)
 		{
 				time1[5]++;
 			if(time1[5]>380)
@@ -201,10 +219,10 @@ int Step_shift()
 			}
 		return 0;
 	  }
-		if(State.sec==BACK&&pos==5)
+		if(State.sec==BACK&&pos==6)
 		{
 				time1[2]++;
-			if(time1[2]>40)
+			if(time1[2]>120)
 			{
 				State.sec=UP_LEFT;
 				pos++;
@@ -212,10 +230,10 @@ int Step_shift()
 			}
 		return 0;
 	  }
-		if(State.sec==UP_LEFT&&pos==6)
+		if(State.sec==UP_LEFT&&pos==7)
 		{
 			time1[3]++;
-			if(time1[3]>50)
+			if(time1[3]>120)
 				{
 					if(1==Step_Left_Judge())
 					{
@@ -224,7 +242,7 @@ int Step_shift()
 						return 0;
 					}
 				}
-			if(time1[3]>time1[0]+200)
+			if(time1[3]>time1[0]+300)
 			{
 			State.pri=FIND_WAY;
 			State.sec=CHASE_BLACK_C;
@@ -238,7 +256,7 @@ int Step_shift()
 
 int Step_Right_Judge()
 {
-	static int flag=0;
+	static int flag=0,time=0;
 	if(blackUL==NONE&&blackUR==NONE)
 		flag=1;
 	if(flag==1&&blackUL==NONE&&blackUR==EXIST)
@@ -246,10 +264,14 @@ int Step_Right_Judge()
 		flag=2;
 		//return 1;
 	}
-	
-	if(fabs(cErr)<0.10&&flag==2&&blackUL==EXIST&&blackUR==EXIST)
+	if(flag==2&&blackUL==EXIST&&blackUR==EXIST)
+	{
+		time++;
+	}
+	if((fabs(cErr)<0.20&&flag==2&&blackUL==EXIST&&blackUR==EXIST)||time>10)
 	
 	{
+		time=0;
 		flag=0;
 		return 1;
 	}
@@ -267,7 +289,7 @@ int Step_Left_Judge()
 		//return 1;
 	}
 	
-	if(fabs(cErr)<0.20&&flag==2&&blackUL==EXIST&&blackUR==EXIST)
+	if(flag==2&&blackUL==EXIST&&blackUR==EXIST)
 	
 	{
 		flag=0;
@@ -276,24 +298,13 @@ int Step_Left_Judge()
 	return 0;
 }
 
-
-void StateHandle()
+void BlackHandle(double ra)
 {
 	com temp;
-  whe last;
+	  whe last;
 	double last_e=0;
 	static int flag=0;
-	switch(State.pri)
-  {
-	  case START:
-		
-		
-		break;
-		
-		case FIND_WAY:
-    
-		
-		temp.wheel=CHASE_BLACK;
+	temp.wheel=CHASE_BLACK;
 		if(State.sec==CHASE_BLACK)
 		{
 		if(blackUL==NONE&&blackUR==EXIST)
@@ -312,14 +323,27 @@ void StateHandle()
 			temp.data1=0;
 		if((blackUL==NONE&&blackUR==NONE)||flag)
     {
-			if(valid<25)
+			if(valid<20)
 			{
+				if(last_e<0)
+				{
 			temp.wheel=UP_LEFT;
 		temp.data1=0.8;
+				}
+				else
+				{
+								temp.wheel=UP_RIGHT;
+		temp.data1=0.8;
+				}
+				if(State.pri==FIND_WAY)
+				{
+								temp.wheel=UP_LEFT;
+		temp.data1=0.8;
+				}
 			}
 			else
 			{
-				temp.data1=cErr*2;
+				temp.data1=cErr*ra;
 				State.sec=CHASE_BLACK_C;
 			}
 		}		
@@ -329,17 +353,40 @@ void StateHandle()
 	 }
 		else
 		{
-			temp.data1=cErr*2;
+			temp.data1=cErr*ra;
 		}
 		SendCommand(temp);
+}
+
+void StateHandle()
+{
+	com temp;
+
+	switch(State.pri)
+  {
+	  case START:
+		
+		
+		break;
+		
+		case FIND_WAY:
+    BlackHandle(2);
+		
+		
     break;	
 		
     case STEP1:
 		
+		if(State.sec==CHASE_BLACK_C||State.sec==CHASE_BLACK)
+		{
+			BlackHandle(6);
+		}
+		else
+		{
     temp.wheel=State.sec;	
 		temp.data1=0.7;
 		SendCommand(temp);
-		
+		}
 		break;
 		case BARRIER:
 			temp.wheel=State.sec;
@@ -347,9 +394,16 @@ void StateHandle()
 		SendCommand(temp);
 		break;
     case STEP2:
-			temp.wheel=State.sec;
+		if(State.sec==CHASE_BLACK_C||State.sec==CHASE_BLACK)
+		{
+			BlackHandle(6);
+		}
+		else
+		{
+    temp.wheel=State.sec;	
 		temp.data1=0.7;
 		SendCommand(temp);
+		}
 
 
     break;

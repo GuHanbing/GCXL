@@ -23,7 +23,7 @@ void control()
 			case UP_RIGHT:  Turn(temp.data1);break;
 			case STAY:   Turn(0);break;
 		  case UP_LEFT:Turn(-1*temp.data1);break;
-		  case UP:     Straight(0.9);break;
+		  case UP:     Straight(0.8);break;
 		  case BACK:   Straight(-0.7);break;
 	    case BACK_LEFT:break;
 	    case BACK_RGHT:break;
@@ -45,7 +45,7 @@ void control()
 		  LR=motoR;
 			last=temp.wheel;
 		}
-	//Set_Pwm(680,665);
+//	Set_Pwm(719,-719);
 	}
   
 }

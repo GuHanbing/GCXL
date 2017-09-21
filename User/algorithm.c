@@ -26,7 +26,7 @@ else
 
 int valid=0;
 int last_line=0;
-void FindWay(uint8_t img[][160],int black,int flag)
+void FindWay(uint8_t img[][160],int black,int flag,int left,int right)
 {
 	int col,row,stRow,mis=0;
 	int stFlag=0,bFlag=0;
@@ -37,7 +37,7 @@ void FindWay(uint8_t img[][160],int black,int flag)
 	valid=0;
 	for(row=119;row>=100;row--)
 	{
-		for(col=0;col<=158;col++)
+		for(col=left;col<=right;col++)
 		{
 			if(img[row][col]<black)
 			{
@@ -174,7 +174,7 @@ void Calc_Center_Error()
 	if(valid>20)
 	{
 	  cErr=sum/val;
-		cErr*=sqrt(fabs(cErr));
+	//	cErr*=sqrt(fabs(cErr));
 	//	sum*=70.0/sqrt(fabs(valid));
 		last_err=cErr;
 		 //cErr=(cErr+)
